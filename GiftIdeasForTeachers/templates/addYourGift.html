@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas|Gloria+Hallelujah|Lato" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/giftjavascript.js' %}"></script>
+	<title>Perfect Teacher Gifts | By Teachers For Teachers</title>
+</head>
+<body>
+	<h1 onclick="location.href='http://www.mymomcodes.com/perfectGift';">What's your favorite gift?</h1>
+    <hr>
+    <form action="/thanksagain/" method="post" id="userForm">
+            {% csrf_token %}
+            <label for="{{ form.giftTitle.id_for_label }}">{{ form.giftTitle.label }}</label><br>
+            {{ form.giftTitle }}<br>
+            <label for="{{ form.image.id_for_label }}">{{ form.image.label }} Web Address</label><br>
+            {{ form.image }}<br>
+            <label for="{{ form.price.id_for_label }}">{{ form.price.label }}</label><br>
+            {{ form.price }}<br>
+            <label for="{{ form.webAddress.id_for_label }}">{{ form.webAddress.label }}</label><br>
+            {{ form.webAddress }}<br>
+            <label for="{{ form.comment.id_for_label }}">{{ form.comment.label }}</label><br>
+            {{ form.comment }}<br>
+    <input type="submit" id="submitButton" value="Add Your Favorite Gift" />
+    </form>
+</body>
+</html>

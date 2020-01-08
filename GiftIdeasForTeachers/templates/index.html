@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas|Gloria+Hallelujah|Lato" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/giftjavascript.js' %}"></script>
+	<title>Perfect Teacher Gifts | By Teachers For Teachers</title>
+</head>
+<body>
+      <h1 onclick="location.href='http://www.mymomcodes.com';">Find your teacher the perfect gift for the holidays</h1>
+        <hr>
+    <div id="header">
+		Have you ever struggled to know exactly what to get your teacher for a Christmas gift?
+		<br>
+		Well you have come to the right place!
+	</div>
+	<div id="teacherQuestions">
+		<form action="/thanks/" method="post">
+    		{% csrf_token %}
+    		<div class="fieldWrapper">
+    			<label for="{{ form.subject.id_for_label }}">{{ form.subject.label }}</label><br>
+    			{{ form.subject }}
+	    	</div>
+    		<div class="fieldWrapper">
+    			<label for="{{ form.coffee.id_for_label }}">{{ form.coffee.label }}</label><br>
+    			{{ form.coffee }}
+ 		   	</div>
+    		<div class="fieldWrapper">
+    			<label for="{{ form.hasChildren.id_for_label }}">{{ form.hasChildren.label }}</label><br> 
+ 		   		{{ form.hasChildren }}
+	    	</div>
+    		<div class="fieldWrapper">
+    			<label for="{{ form.hasASenseOfHumor.id_for_label }}">{{ form.hasASenseOfHumor.label }}</label><br> 
+    			{{ form.hasASenseOfHumor }}
+	    	</div>
+	    	<div class="fieldWrapper">
+    			<label for="{{ form.likes.id_for_label }}">{{ form.likes.label }}</label><br>
+ 		   		{{ form.likes }}
+	    	</div>
+    		<div class="fieldWrapper">
+    			<label for="{{ form.sportsFan.id_for_label }}">{{ form.sportsFan.label }}</label><br> 
+    			{{ form.sportsFan }}
+	    	</div>
+ 		   	<div class="fieldWrapper">
+ 		   		<label for="{{ form.price_cap.id_for_label }}">{{ form.price_cap.label }}</label><br>
+    			${{ form.price_cap }}  <!--On page load this form will show up with the label created in forms.py. Redirects the information to the page indicated-->
+    		</div>
+    		<div class="fieldWrapper"></div><div class="fieldWrapper"><input type="submit" id="submitButton" value="Find the Perfect Gift" /></div>
+    		
+		</form>
+	</div>
+ <!--form action refers to the page where the data will be sent, but the function is performed separately-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+option_settings:
+  aws:elasticbeanstalk:container:python:
+    WSGIPath: thePerfectGift/wsgi.py
+
+container_commands:
+  01_migrate:
+    command: "source /opt/python/run/venv/bin/activate && python thePerfectGiftw/manage.py migrate --noinput"
+    leader_only: true
+  02_collectstatic:
+    command: "source /opt/python/run/venv/bin/activate && python thePerfectGift/manage.py collectstatic --noinput"
+
+option_settings:
+  "aws:elasticbeanstalk:application:environment":
+    DJANGO_SETTINGS_MODULE: "thePerfectGift.settings"
+    "PYTHONPATH": "/opt/python/current/app/thePerfectGift:$PYTHONPATH"
+    "ALLOWED_HOSTS": ".elasticbeanstalk.com"
+  "aws:elasticbeanstalk:container:python":
+    WSGIPath: thePerfectGift/thePerfectGift/wsgi.py
+    NumProcesses: 3
+    NumThreads: 20
+  "aws:elasticbeanstalk:container:python:staticfiles":
+    "/static/": "www/static/"
